@@ -1,5 +1,5 @@
 # import Flask
-from flask import Flask,render_template,request
+from flask import Flask, render_template, request 
 
 #  create flask opject
 app = Flask('__name__')
@@ -8,8 +8,9 @@ app = Flask('__name__')
 @app.route('/')
 #  define a function from web page
 def index():
+    link = '/calculator /help /hi /sum /'.split()
     contactMail = 'qzwini@gmail.com'
-    return render_template('index.html',contact=contactMail)
+    return render_template('index.html',contact=contactMail ,link=link)
     
 
 
@@ -23,6 +24,35 @@ def sum():
 @app.route('/help')
 def fav():
     return render_template('help.html', lol='FuckU')
+
+@app.route('/hi/<name>')
+def hi (name):
+    return render_template('hi.html',name=name)
+
+
+
+@app.route('/calculator', methods=['GET', 'POST'])
+def calculator():
+    l = 'this is my calculator'.split()
+    result = None  # when the method is GET
+    if request.method == 'POST':
+        if not request.form['num1'] and not request.form['num2'] \
+                and not request.form['op']:
+            result = 'please fil the form'
+            # print(result)
+        else:
+            try:
+                n1 = request.form['num1']
+                n2 = request.form['num2']
+                op = request.form['op']
+                # print(n1, op, n2)
+                result = eval('{}{}{}'.format(n1, op, n2))
+                # print(result)
+            except BaseException as error:
+                result = 'error: {}'.format(error)
+                # print(result)
+    return render_template('calculator.html', result=result, l=l)
+
 
 
 

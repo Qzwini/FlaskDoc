@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/bootstrap.min.css" rel="stylesheet" media="screen">
+    <title>Cal test</title>
+</head>
+
+<body>
+    <h1>Hi in Math Page</h1>
+    <br>
+
+    <form action="" method="post">
+        <input type="text" placeholder="First Number" name="num1" value="{{ request.form.num1 }}">
+        <input type="text" placeholder="Operator" name="op" value="{{ request.form.op }}">
+        <input type="text" placeholder="Second Number" name="num2" value="{{ request.form.num2 }}">
+        <input class="btn btn-default" type="submit" value="Calculate">
+    </form>
+
+    {% if result %}
+    <p><strong>Result : </strong>{{ result }}</p>
+
+    <br> {% for i in l %}
+    <p>{{ i }}</p>
+
+    {% endfor %} {% endif %}
+</body>
+
+</html>

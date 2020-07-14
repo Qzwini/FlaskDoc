@@ -14,6 +14,16 @@
     <a href="https://www.instagram.com/qzwini/">
         <p>{{ contact }}</p>
     </a>
+    <h5>My Page</h5>
+    {% for i in link%}
+
+    <ul>
+        <a href="{{ i }}">
+            <li>{{ i }}</li>
+        </a>
+
+    </ul>
+    {% endfor %}
 </body>
 
 </html>
