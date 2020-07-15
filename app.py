@@ -8,7 +8,7 @@ app = Flask('__name__')
 @app.route('/')
 #  define a function from web page
 def index():
-    link = '/calculator /help /hi /sum /'.split()
+    link = '/calculator /help /hi /sum /index'.split()
     contactMail = 'qzwini@gmail.com'
     return render_template('index.html',contact=contactMail ,link=link)
     

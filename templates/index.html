@@ -15,15 +15,22 @@
         <p>{{ contact }}</p>
     </a>
     <h5>My Page</h5>
-    {% for i in link%}
-
+    {% for i in link%} {% if i != '/index' %}
     <ul>
         <a href="{{ i }}">
             <li>{{ i }}</li>
         </a>
 
     </ul>
-    {% endfor %}
+
+    {% else %}
+    <ul>
+        <a href="/">
+            <li>{{ i }}</li>
+        </a>
+
+    </ul>
+    {% endif %} {% endfor %}
 </body>
 
 </html>
