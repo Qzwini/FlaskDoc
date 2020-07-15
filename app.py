@@ -8,7 +8,7 @@ app = Flask('__name__')
 @app.route('/')
 #  define a function from web page
 def index():
-    link = '/calculator /help /hi /sum /index'.split()
+    link = '/calculator /help /hi /sum /index /words'.split()
     contactMail = 'qzwini@gmail.com'
     return render_template('index.html',contact=contactMail ,link=link)
     
@@ -52,6 +52,30 @@ def calculator():
                 result = 'error: {}'.format(error)
                 # print(result)
     return render_template('calculator.html', result=result, l=l)
+
+
+
+@app.route('/words', methods=['GET', 'POST'])
+def word ():
+    result = None
+    op = 'most frequent'
+    if request.method=='POST':
+        text = request.form['mytext']
+        if not text:
+            result = 'please fil the form'
+        else:
+            counts={}
+            for word in text.split():
+                counts[word]= counts.get(word, 0) +1
+            result = sorted([(v, k) for k, v in counts.items()], reverse=True)[0]
+    return render_template('words.html', op=op, result=result)
+
+
+
+     
+
+
+
 
 
 
