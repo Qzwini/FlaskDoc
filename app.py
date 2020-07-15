@@ -8,10 +8,18 @@ app = Flask('__name__')
 @app.route('/')
 #  define a function from web page
 def index():
-    link = '/calculator /help /hi /sum /index /words'.split()
+    link = '/calculator /help /hi /sum /index /words /testMaster1'.split()
     contactMail = 'qzwini@gmail.com'
     return render_template('index.html',contact=contactMail ,link=link)
     
+
+
+# # block
+# app.route('/master')
+# def block():
+#     page = '/calculator /help /hi /sum /index /words /testMaster1'.split()
+#     return render_template('master.html', page=page)
+
 
 
 @app.route('/sum')
@@ -73,8 +81,9 @@ def word ():
 
 
      
-
-
+@app.route('/testMaster1')
+def test():
+    return render_template('testMaster1.html')
 
 
 
