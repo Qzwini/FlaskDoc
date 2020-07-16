@@ -55,9 +55,13 @@ def dic ():
 
 @app.route('/stu_db')
 def db ():
+    #Step1 : Connect to db
     conn = sqlite3.connect('./db/student_info.sqlite')
+    # Step2: cursor To Connect
     cur = conn.cursor()
+    # Step3: execute SQL Statment, hear can select table
     cur.execute('''select * from student_info''')
+    # Step4: Save the execute in vaariable
     rows = cur.fetchall()
     # print (rows)
     return render_template ('StDB.html', rows=rows)
