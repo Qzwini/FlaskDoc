@@ -1,6 +1,6 @@
 # import Flask
 from flask import Flask, render_template, request 
-
+import sqlite3
 #  create flask opject
 app = Flask('__name__')
 
@@ -8,7 +8,7 @@ app = Flask('__name__')
 @app.route('/')
 #  define a function from web page
 def index():
-    link = '/calculator /help /hi /sum /index /words /testMaster1 /table'.split()
+    link = '/calculator /help /hi /sum /index /words /testMaster1 /table /stu_db'.split()
     contactMail = 'qzwini@gmail.com'
     return render_template('index.html',contact=contactMail ,link=link)
     
@@ -49,6 +49,19 @@ def dic ():
         '12049362':{'name':'Muh', 'dept':'PDF'}
     }
     return render_template ('decyAsTable.html', students=students)
+
+
+
+
+@app.route('/stu_db')
+def db ():
+    conn = sqlite3.connect('./db/student_info.sqlite')
+    cur = conn.cursor()
+    cur.execute('''select * from student_info''')
+    rows = cur.fetchall()
+    # print (rows)
+    return render_template ('StDB.html', rows=rows)
+
 
 
 @app.route('/calculator', methods=['GET', 'POST'])
