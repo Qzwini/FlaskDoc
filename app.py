@@ -61,8 +61,16 @@ def db ():
     cur = conn.cursor()
     # Step3: execute SQL Statment, hear can select table
     cur.execute('''select * from student_info''')
-    # ex
+
+    # # request.args.get id
+    # studint_id=request.args.get('id')
+    # cur.execute('''select * from student_info where stu_id={}'''.format(studint_id))
+
+    # # ex
     # cur.execute('''select std_id,dept from student_info''')
+    # # insert
+    # cur.execute('''insert into from student_info''')
+
 
     # Step4: Save the execute in vaariable
     rows = cur.fetchall()
