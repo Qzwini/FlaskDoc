@@ -8,7 +8,7 @@ app = Flask('__name__')
 @app.route('/')
 #  define a function from web page
 def index():
-    link = '/calculator /help /hi /sum /index /words /testMaster1'.split()
+    link = '/calculator /help /hi /sum /index /words /testMaster1 /table'.split()
     contactMail = 'qzwini@gmail.com'
     return render_template('index.html',contact=contactMail ,link=link)
     
@@ -37,6 +37,18 @@ def fav():
 def hi (name):
     return render_template('hi.html',name=name)
 
+
+@app.route('/table')
+def dic ():
+    students ={
+        '12043414':{'name':'Ali', 'dept':'XD'},
+        '12043653':{'name':'Qzwini', 'dept':'Web'},
+        '12043486':{'name':'Omar', 'dept':'Web'},
+        '12043964':{'name':'Ibrahim', 'dept':'Web'},
+        '12043743':{'name':'Suliman', 'dept':'Mobike'},
+        '12049362':{'name':'Muh', 'dept':'PDF'}
+    }
+    return render_template ('decyAsTable.html', students=students)
 
 
 @app.route('/calculator', methods=['GET', 'POST'])
